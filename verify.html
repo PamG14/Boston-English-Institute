@@ -21,7 +21,7 @@
             <p>To verify a certificate, please scan the QR code or enter the certificate ID:</p>
 
             <!-- Form to input Certificate ID -->
-            <form action="#" method="post" onsubmit="return verifyCertificate(event)">
+            <form id="certificate-form">
                 <label for="certificate-id">Enter Certificate ID:</label>
                 <input type="text" id="certificate-id" name="certificate-id" placeholder="Certificate ID">
                 <button type="submit">Verify</button>
@@ -101,7 +101,16 @@
                     `;
                 });
         }
+
+        // Add an event listener for form submission
+        document.getElementById('certificate-form').addEventListener('submit', verifyCertificate);
     </script>
+
+    <footer>
+        <p>© 2020 Boston English Institute. All rights reserved.</p>
+    </footer>
+</body>
+</html>
 
     <footer>
         <p>© 2020 Boston English Institute. All rights reserved.</p>
