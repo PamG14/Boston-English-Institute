@@ -84,5 +84,59 @@ footer a {
 footer a:hover {
     color: #C8A2C8;  /* Optional: change color on hover */
 }
+/* Verification Page */
+.verify {
+    padding: 20px;
+    text-align: center;
+}
+
+.verify h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.verify p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+.verify form {
+    margin-bottom: 30px;
+}
+
+.verify label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.verify input {
+    padding: 10px;
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+.verify button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    background-color: #C8A2C8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.verify button:hover {
+    background-color: #FF5733;
+}
+
+#qr-code-section {
+    margin-top: 30px;
+}
+
+#qr-code-image {
+    width: 200px; /* Adjust size of QR code */
+    height: 200px;
+}
 
 }
