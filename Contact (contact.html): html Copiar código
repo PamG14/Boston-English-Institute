@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Contact Us</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+    </nav>
+    <main>
+        <p>Email: contact@myenglishinstitute.com</p>
+        <p>Phone: +123 456 789</p>
+        <p>Address: 123 Main Street, City, Country</p>
+    </main>
+    <footer>
+        <p>© 2024 My English Institute</p>
+    </footer>
+</body>
+</html>
