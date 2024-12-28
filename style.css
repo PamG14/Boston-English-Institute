@@ -76,4 +76,13 @@ footer {
     background: #333;
     color: white;
     position: relative;
+
+footer a {
+    color: #C8A2C8;  /* Replace with your desired color */
+}
+
+footer a:hover {
+    color: #C8A2C8;  /* Optional: change color on hover */
+}
+
 }
