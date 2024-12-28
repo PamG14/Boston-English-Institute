@@ -1,1 +1,1 @@
-# Boston
+# Boston English Institute
