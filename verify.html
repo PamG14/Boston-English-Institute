@@ -57,79 +57,51 @@
 
             const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
             fetch(url)
-                .then(response => response.json())
+                .then(response => response.json())  // Process the response as JSON
                 .then(data => {
-                    const rows = data.values;
-                    let certificateFound = false;
+                    console.log(data);  // Check the response content in the console
+                    if (data.values && Array.isArray(data.values)) {
+                        const rows = data.values;
+                        let certificateFound = false;
 
-                    // Loop through the rows to find the certificate ID
-                    rows.forEach(row => {
-                        if (row[0] === certificateId) {  // Assuming ID is in the first column
-                            certificateFound = true;
+                        // Loop through the rows to find the certificate ID
+                        rows.forEach(row => {
+                            if (row[0] === certificateId) {  // Assuming ID is in the first column
+                                certificateFound = true;
+                                document.getElementById('verification-result').innerHTML = `
+                                    <h3>Certificate Verified!</h3>
+                                    <p>Certificate ID: ${row[0]}</p>
+                                    <p>Student: ${row[1]}</p>
+                                    <p>Course: ${row[2]}</p>
+                                    <p>Date: ${row[3]}</p>
+                                `;
+                            }
+                        });
+
+                        // If the certificate was not found
+                        if (!certificateFound) {
                             document.getElementById('verification-result').innerHTML = `
-                                <h3>Certificate Verified!</h3>
-                                <p>Certificate ID: ${row[0]}</p>
-                                <p>Student: ${row[1]}</p>
-                                <p>Course: ${row[2]}</p>
-                                <p>Date: ${row[3]}</p>
+                                <h3>Certificate not found</h3>
+                                <p>The certificate ID entered does not exist in our records.</p>
                             `;
                         }
-                    });
-
-                    if (!certificateFound) {
+                    } else {
+                        console.error('No valid data found:', data);
                         document.getElementById('verification-result').innerHTML = `
-                            <h3>Certificate not found</h3>
-                            <p>The certificate ID entered does not exist in our records.</p>
+                            <h3>Error verifying certificate</h3>
+                            <p>No data available for verification.</p>
                         `;
                     }
-                    fetch(url)
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);  // Verifica lo que contiene la respuesta
-        if (data.values && Array.isArray(data.values)) {
-            const rows = data.values;
-            let certificateFound = false;
-
-            // Busca el ID del certificado
-            rows.forEach(row => {
-                if (row[0] === certificateId) {  // Suponiendo que el ID está en la primera columna
-                    certificateFound = true;
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
                     document.getElementById('verification-result').innerHTML = `
-                        <h3>Certificate Verified!</h3>
-                        <p>Certificate ID: ${row[0]}</p>
-                        <p>Student: ${row[1]}</p>
-                        <p>Course: ${row[2]}</p>
-                        <p>Date: ${row[3]}</p>
+                        <h3>Error verifying certificate</h3>
+                        <p>There was an error verifying the certificate. Please try again later.</p>
                     `;
-                }
-            });
-
-            if (!certificateFound) {
-                document.getElementById('verification-result').innerHTML = `
-                    <h3>Certificate not found</h3>
-                    <p>The certificate ID entered does not exist in our records.</p>
-                `;
-            }
-        } else {
-            console.error('No valid data found:', data);
-            document.getElementById('verification-result').innerHTML = `
-                <h3>Error verifying certificate</h3>
-                <p>No data available for verification.</p>
-            `;
-        }
-    })
-    .catch(error => {
-        console.error('Error fetching data:', error);
-        document.getElementById('verification-result').innerHTML = `
-            <h3>Error verifying certificate</h3>
-            <p>There was an error verifying the certificate. Please try again later.</p>
-        `;
-    });
-
+                });
         }
     </script>
-</body>
-</html>
 
     <footer>
         <p>© 2020 Boston English Institute. All rights reserved.</p>
