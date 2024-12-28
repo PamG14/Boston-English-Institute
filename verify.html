@@ -20,16 +20,21 @@
             <h2>Verify Certificate</h2>
             <p>To verify a certificate, please scan the QR code or enter the certificate ID:</p>
 
-            <!-- Input field for Certificate ID -->
-            <form action="#" method="post">
+            <!-- Form to input Certificate ID -->
+            <form action="#" method="post" onsubmit="return verifyCertificate(event)">
                 <label for="certificate-id">Enter Certificate ID:</label>
                 <input type="text" id="certificate-id" name="certificate-id" placeholder="Certificate ID">
                 <button type="submit">Verify</button>
             </form>
 
+            <!-- Section to display verification results -->
+            <div id="verification-result">
+                <!-- Here we will display the results after the verification -->
+            </div>
+
             <div id="qr-code-section">
                 <h3>Or Scan the QR Code:</h3>
-                <!-- QR code image or scanner functionality can be added here later -->
+                <!-- You can add the QR code image or scanner here -->
                 <img src="your-qr-code-image.png" alt="QR Code" id="qr-code-image">
             </div>
         </section>
@@ -37,6 +42,65 @@
 
     <footer>
         <p>© 2024 Boston English Institute. All rights reserved.</p>
+    </footer>
+
+    <script type="text/javascript">
+        const sheetId = '137c2FRGFSc0eIOV0KFylqMMMMDi5e0ei6eGII1-7lEQ';  // Replace with your sheet ID
+        const apiKey = '5b6ba295862449255ae537dd5984345f123aa9ea';  // Replace with your API key
+        const range = 'Sheet1!A2:D';  // Replace with the range of your Google Sheets
+
+        // Function to verify certificate ID
+        function verifyCertificate(event) {
+            event.preventDefault();  // Prevent the default form submission
+
+            const certificateId = document.getElementById('certificate-id').value.trim();
+            if (!certificateId) {
+                alert('Please enter a certificate ID');
+                return;
+            }
+
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const rows = data.values;
+                    let certificateFound = false;
+
+                    // Loop through the rows to find the certificate ID
+                    rows.forEach(row => {
+                        if (row[0] === certificateId) {  // Assuming ID is in the first column
+                            certificateFound = true;
+                            document.getElementById('verification-result').innerHTML = `
+                                <h3>Certificate Verified!</h3>
+                                <p>Certificate ID: ${row[0]}</p>
+                                <p>Student: ${row[1]}</p>
+                                <p>Course: ${row[2]}</p>
+                                <p>Date: ${row[3]}</p>
+                            `;
+                        }
+                    });
+
+                    if (!certificateFound) {
+                        document.getElementById('verification-result').innerHTML = `
+                            <h3>Certificate not found</h3>
+                            <p>The certificate ID entered does not exist in our records.</p>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    document.getElementById('verification-result').innerHTML = `
+                        <h3>Error verifying certificate</h3>
+                        <p>There was an error verifying the certificate. Please try again later.</p>
+                    `;
+                });
+        }
+    </script>
+</body>
+</html>
+
+    <footer>
+        <p>© 2020 Boston English Institute. All rights reserved.</p>
     </footer>
 </body>
 </html>
