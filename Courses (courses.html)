@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our Courses</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Our Courses</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <main>
+        <ul>
+            <li><strong>Beginner English:</strong> Learn the basics of English grammar and vocabulary.</li>
+            <li><strong>Intermediate English:</strong> Improve your fluency and comprehension skills.</li>
+            <li><strong>Advanced English:</strong> Master the language for professional or academic purposes.</li>
+        </ul>
+    </main>
+    <footer>
+        <p>© 2024 My English Institute</p>
+    </footer>
+</body>
+</html>
