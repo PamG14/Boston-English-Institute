@@ -23,5 +23,27 @@
     <footer>
         <p>© 2024 My English Institute</p>
     </footer>
+    <!-- Código JavaScript al final del body -->
+    <script type="text/javascript">
+        const sheetId = '137c2FRGFSc0eIOV0KFylqMMMMDi5e0ei6eGII1-7lEQ';  // Reemplaza con el ID de tu hoja
+        const apiKey = '5b6ba295862449255ae537dd5984345f123aa9ea';  // Reemplaza con tu clave de API
+        const range = 'Sheet1!A2:D';  // Rango de celdas que quieres consultar (ajusta según tu hoja)
+
+        function getData() {
+            const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const rows = data.values;
+                    let output = '<ul>';
+                    rows.forEach(row => {
+                        output += `<li>${row[0]} - ${row[1]} - ${row[2]} - ${row[3]}</li>`;
+                    });
+                    output += '</ul>';
+                    document.getElementById('data').innerHTML = output;
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+    </script>
 </body>
 </html>
