@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to My English Institute</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My English Institute</h1>
+        <p>Learn English with personalized and effective courses.</p>
+    </header>
+    <nav>
+        <a href="about.html">About</a>
+        <a href="courses.html">Courses</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <main>
+        <section>
+            <h2>Why Choose Us?</h2>
+            <p>We offer high-quality English lessons tailored to your needs.</p>
+        </section>
+    </main>
+    <footer>
+        <p>© 2024 My English Institute</p>
+    </footer>
+</body>
+</html>
