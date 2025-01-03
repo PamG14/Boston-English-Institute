@@ -32,43 +32,67 @@
         </section>
     </main>
 
-    <script type="text/javascript">
-        // Function to verify certificate ID
-        function verifyCertificate(event) {
-            event.preventDefault();  // Prevent the default form submission
+<script type="text/javascript">
+    // Function to get URL parameter
+    function getURLParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    }
 
-            const certificateId = document.getElementById('certificate-id').value.trim();
-            if (!certificateId) {
-                alert('Please enter a certificate ID');
-                return;
-            }
-
-            // Make the request to the backend API on Replit
-            fetch(`https://7ee92e83-6519-4ed8-8e58-6591e70d0416-00-1jryvvmkoe8g0.riker.replit.dev/verify?cert_id=${certificateId}`)
-                .then(response => response.json())  // Process the response as JSON
-                .then(data => {
-                    const resultDiv = document.getElementById('verification-result');
-                    if (data.status === 'Certificado válido') {
-                        resultDiv.innerHTML = `
-                            <h3>${data.status}</h3>
-                            <p><strong>Nombre:</strong> ${data.student_name}</p>
-                            <p><strong>Nivel:</strong> ${data.course}</p>
-                            <p><strong>Año:</strong> ${data.issue_date}</p>
-                        `;
-                    } else {
-                        resultDiv.innerHTML = `<h3>${data.status}</h3>`;
-                    }
-                })
-                .catch(error => {
-                    const resultDiv = document.getElementById('verification-result');
-                    resultDiv.innerHTML = `<h3>Error</h3><p>There was an error verifying the certificate. Please try again later.</p>`;
-                    console.error('Error fetching data:', error);
-                });
+    // Function to verify certificate ID
+    function verifyCertificate(event) {
+        if (event) {
+            event.preventDefault(); // Prevent form submission if triggered by form
         }
 
-        // Add an event listener for form submission
-        document.getElementById('certificate-form').addEventListener('submit', verifyCertificate);
-    </script>
+        const certificateIdInput = document.getElementById('certificate-id');
+        let certificateId = certificateIdInput ? certificateIdInput.value.trim() : null;
+
+        // If no input value, try getting the 'cert_id' from the URL
+        if (!certificateId) {
+            certificateId = getURLParameter('cert_id');
+        }
+
+        if (!certificateId) {
+            alert('Please enter a certificate ID or scan a valid QR code.');
+            return;
+        }
+
+        // Fetch the verification data from the backend
+        fetch(`https://7ee92e83-6519-4ed8-8e58-6591e70d0416-00-1jryvvmkoe8g0.riker.replit.dev/verify?cert_id=${certificateId}`)
+            .then(response => response.json()) // Process the response as JSON
+            .then(data => {
+                const resultDiv = document.getElementById('verification-result');
+                if (data.status === 'Certificado válido') {
+                    resultDiv.innerHTML = `
+                        <h3>${data.status}</h3>
+                        <p><strong>Nombre:</strong> ${data.student_name}</p>
+                        <p><strong>Nivel:</strong> ${data.course}</p>
+                        <p><strong>Año:</strong> ${data.issue_date}</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<h3>${data.status}</h3>`;
+                }
+            })
+            .catch(error => {
+                const resultDiv = document.getElementById('verification-result');
+                resultDiv.innerHTML = `<h3>Error</h3><p>There was an error verifying the certificate. Please try again later.</p>`;
+                console.error('Error fetching data:', error);
+            });
+    }
+
+    // Automatically verify if 'cert_id' exists in the URL
+    document.addEventListener('DOMContentLoaded', () => {
+        const certIdFromURL = getURLParameter('cert_id');
+        if (certIdFromURL) {
+            document.getElementById('certificate-id').value = certIdFromURL;
+            verifyCertificate(); // Trigger verification automatically
+        }
+    });
+
+    // Add event listener for manual form submission
+    document.getElementById('certificate-form').addEventListener('submit', verifyCertificate);
+</script>
 
     <footer>
         <p>© 2020 Boston English Institute. All rights reserved.</p>
