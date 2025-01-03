@@ -34,40 +34,49 @@
 
     <script type="text/javascript">
         // Function to verify certificate ID
-        function verifyCertificate(event) {
-            event.preventDefault();  // Prevent the default form submission
-
-            const certificateId = document.getElementById('certificate-id').value.trim();
-            if (!certificateId) {
-                alert('Please enter a certificate ID');
-                return;
-            }
+        function verifyCertificate(certificateId) {
+            const resultDiv = document.getElementById('verification-result');
 
             // Make the request to the backend API on Replit
             fetch(`https://7ee92e83-6519-4ed8-8e58-6591e70d0416-00-1jryvvmkoe8g0.riker.replit.dev/verify?cert_id=${certificateId}`)
                 .then(response => response.json())  // Process the response as JSON
                 .then(data => {
-                    const resultDiv = document.getElementById('verification-result');
                     if (data.status === 'Certificado válido') {
                         resultDiv.innerHTML = `
                             <h3>${data.status}</h3>
                             <p><strong>Nombre:</strong> ${data.student_name}</p>
-                            <p><strong>Nivel:</strong> ${data.course}</p>
-                            <p><strong>Año:</strong> ${data.issue_date}</p>
+                            <p><strong>DNI:</strong> ${data.dni}</p>
+                            <p><strong>Curso:</strong> ${data.course}</p>
+                            <p><strong>Nivel:</strong> ${data.level}</p>
+                            <p><strong>Fecha de Emisión:</strong> ${data.issue_date}</p>
                         `;
                     } else {
                         resultDiv.innerHTML = `<h3>${data.status}</h3>`;
                     }
                 })
                 .catch(error => {
-                    const resultDiv = document.getElementById('verification-result');
                     resultDiv.innerHTML = `<h3>Error</h3><p>There was an error verifying the certificate. Please try again later.</p>`;
                     console.error('Error fetching data:', error);
                 });
         }
 
-        // Add an event listener for form submission
-        document.getElementById('certificate-form').addEventListener('submit', verifyCertificate);
+        // Event listener for form submission
+        document.getElementById('certificate-form').addEventListener('submit', event => {
+            event.preventDefault();  // Prevent the default form submission
+            const certificateId = document.getElementById('certificate-id').value.trim();
+            if (certificateId) {
+                verifyCertificate(certificateId);
+            } else {
+                alert('Please enter a certificate ID');
+            }
+        });
+
+        // Check for cert_id in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const certIdFromURL = urlParams.get('cert_id');
+        if (certIdFromURL) {
+            verifyCertificate(certIdFromURL); // Automatically verify if cert_id is present in the URL
+        }
     </script>
 
     <footer>
@@ -75,3 +84,4 @@
     </footer>
 </body>
 </html>
+
