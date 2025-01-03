@@ -1,78 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify Certificate</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="courses.html">Courses</a>
-            <a href="verify.html">Verify Certificate</a>
-        </nav>
-    </header>
+// Function to verify certificate ID
+function verifyCertificate(event) {
+    event.preventDefault();  // Prevent the default form submission
 
-    <main>
-        <section class="verify">
-            <h2>Verify Certificate</h2>
-            <p>To verify a certificate, please enter the certificate ID:</p>
+    const certificateId = document.getElementById('certificate-id').value.trim();
+    if (!certificateId) {
+        alert('Please enter a certificate ID');
+        return;
+    }
 
-            <!-- Form to input Certificate ID -->
-            <form id="certificate-form">
-                <label for="certificate-id">Enter Certificate ID:</label>
-                <input type="text" id="certificate-id" name="certificate-id" placeholder="Certificate ID" required>
-                <button type="submit">Verify</button>
-            </form>
+    const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+    fetch(url)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`); // Handle non-OK responses
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);  // Log the response to see what it contains
 
-            <!-- Section to display verification results -->
-            <div id="verification-result"></div>
-        </section>
-    </main>
-
-    <script type="text/javascript">
-        // Function to verify certificate ID
-        function verifyCertificate(event) {
-            event.preventDefault();  // Prevent the default form submission
-
-            const certificateId = document.getElementById('certificate-id').value.trim();
-            if (!certificateId) {
-                alert('Please enter a certificate ID');
+            // Check for errors in the response
+            if (data.error) {
+                console.error('API Error:', data.error);
+                document.getElementById('verification-result').innerHTML = `
+                    <h3>Error verifying certificate</h3>
+                    <p>${data.error.message}</p>
+                `;
                 return;
             }
 
-            // Make the request to the backend API on Replit
-            fetch(`https://7ee92e83-6519-4ed8-8e58-6591e70d0416-00-1jryvvmkoe8g0.riker.replit.dev/verify?cert_id=${certificateId}`)
-                .then(response => response.json())  // Process the response as JSON
-                .then(data => {
-                    const resultDiv = document.getElementById('verification-result');
-                    if (data.status === 'Certificado válido') {
-                        resultDiv.innerHTML = `
-                            <h3>${data.status}</h3>
-                            <p><strong>Nombre:</strong> ${data.nombre}</p>
-                            <p><strong>Nivel:</strong> ${data.nivel}</p>
-                            <p><strong>Año:</strong> ${data.año}</p>
+            if (data.values && Array.isArray(data.values)) {
+                const rows = data.values;
+                let certificateFound = false;
+
+                // Loop through the rows to find the certificate ID
+                rows.forEach(row => {
+                    if (row[0] === certificateId) {  // Assuming ID is in the first column
+                        certificateFound = true;
+                        document.getElementById('verification-result').innerHTML = `
+                            <h3>Certificate Verified!</h3>
+                            <p>Certificate ID: ${row[0]}</p>
+                            <p>Student: ${row[1]}</p>
+                            <p>Course: ${row[2]}</p>
+                            <p>Date: ${row[3]}</p>
                         `;
-                    } else {
-                        resultDiv.innerHTML = `<h3>${data.status}</h3>`;
                     }
-                })
-                .catch(error => {
-                    const resultDiv = document.getElementById('verification-result');
-                    resultDiv.innerHTML = `<h3>Error</h3><p>There was an error verifying the certificate. Please try again later.</p>`;
-                    console.error('Error fetching data:', error);
                 });
-        }
 
-        // Add an event listener for form submission
-        document.getElementById('certificate-form').addEventListener('submit', verifyCertificate);
-    </script>
-
-    <footer>
-        <p>© 2020 Boston English Institute. All rights reserved.</p>
-    </footer>
-</body>
-</html>
-
+                // If the certificate was not found
+                if (!certificateFound) {
+                    document.getElementById('verification-result').innerHTML = `
+                        <h3>Certificate not found</h3>
+                        <p>The certificate ID entered does not exist in our records.</p>
+                    `;
+                }
+            } else {
+                console.error('No valid data found:', data);
+                document.getElementById('verification-result').innerHTML = `
+                    <h3>Error verifying certificate</h3>
+                    <p>No data available for verification.</p>
+                `;
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);  // Log the error for debugging
+            document.getElementById('verification-result').innerHTML = `
+                <h3>Error verifying certificate</h3>
+                <p>There was an error verifying the certificate. Please try again later.</p>
+                <p><strong>Error Details:</strong> ${error.message}</p>  <!-- Display error details to the user -->
+            `;
+        });
+}
