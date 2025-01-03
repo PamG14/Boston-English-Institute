@@ -43,12 +43,51 @@
                 <li>Flexible learning schedules.</li>
             </ul>
         </section>
+        
+        <!-- New Section for Certificate Verification -->
+        <section id="certificate-verification">
+            <h2>Verify Your Certificate</h2>
+            <form id="verify-form">
+                <label for="cert_id">Enter Certificate ID:</label>
+                <input type="text" id="cert_id" name="cert_id" required>
+                <button type="submit">Verify</button>
+            </form>
+            <div id="verification-result"></div>
+        </section>
     </main>
     <footer>
         <p>© 2020 Boston English Institute. All rights reserved.</p>
         <p>Contact us: <a href="contact.html">Reach out!</a></p>
     </footer>
-</body>
 
+    <script>
+        document.getElementById('verify-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const certId = document.getElementById('cert_id').value;
+            
+            // Make the request to the backend API on Replit
+            fetch(`https://7ee92e83-6519-4ed8-8e58-6591e70d0416-00-1jryvvmkoe8g0.riker.replit.dev/verify?cert_id=${certId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const resultDiv = document.getElementById('verification-result');
+                    if (data.status === 'Certificado válido') {
+                        resultDiv.innerHTML = `
+                            <h3>${data.status}</h3>
+                            <p><strong>Nombre:</strong> ${data.nombre}</p>
+                            <p><strong>Nivel:</strong> ${data.nivel}</p>
+                            <p><strong>Año:</strong> ${data.año}</p>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `<p>${data.status}</p>`;
+                    }
+                })
+                .catch(error => {
+                    const resultDiv = document.getElementById('verification-result');
+                    resultDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+                });
+        });
+    </script>
+</body>
 </html>
+
 
