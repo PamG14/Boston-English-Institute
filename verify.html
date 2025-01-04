@@ -38,7 +38,7 @@
             const resultDiv = document.getElementById('verification-result');
 
             // Make the request to the backend API on Replit
-            fetch(`https://boston-english-institute.onrender.com/verify?cert_id=${certificateId}`)
+            fetch('https://boston-english-institute.onrender.com/verify?cert_id=' + certId)
                 .then(response => response.json())  // Process the response as JSON
                 .then(data => {
                     if (data.status === 'Certificado válido') {
