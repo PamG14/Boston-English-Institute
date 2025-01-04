@@ -20,8 +20,8 @@ credentials = service_account.Credentials.from_service_account_info(
 )
 
 # Configuración de la API de Google Sheets
-spreadsheet_id = 'TU_SPREADSHEET_ID'  # Asegúrate de actualizar el ID de la hoja
-range_name = 'Hoja 1!A2:H'  # Ajusta el rango según tu hoja de cálculo
+spreadsheet_id = '1TsIqRDMV-8Rv2xlx4oG_DLVxCOcxnfhWt6-q96x9qKw'  # Asegúrate de actualizar el ID de la hoja
+range_name = 'Hoja 1!A2:F'  # Ajusta el rango según tu hoja de cálculo
 
 # Ruta principal (agregada para evitar 404 al acceder a la raíz)
 @app.route('/')
