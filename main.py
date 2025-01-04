@@ -20,9 +20,15 @@ credentials = service_account.Credentials.from_service_account_info(
 )
 
 # Configuración de la API de Google Sheets
-spreadsheet_id = 'TU_SPREADSHEET_ID'
+spreadsheet_id = 'TU_SPREADSHEET_ID'  # Asegúrate de actualizar el ID de la hoja
 range_name = 'Hoja 1!A2:H'  # Ajusta el rango según tu hoja de cálculo
 
+# Ruta principal (agregada para evitar 404 al acceder a la raíz)
+@app.route('/')
+def home():
+    return "Bienvenido a la API de verificación de certificados"
+
+# Ruta para verificar certificados
 @app.route('/verify', methods=['GET'])
 def verify_certificate():
     cert_id = request.args.get('cert_id')
