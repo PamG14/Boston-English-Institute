@@ -14,6 +14,16 @@
         <a href="courses.html">Courses</a>
         <a href="contact.html">Contact</a>
     </nav>
+        <!-- WhatsApp Button Floating -->
+    <div class="whatsapp-widget">
+        <a 
+            href="https://wa.me/1234567890?text=Hola,%20quiero%20hacer%20una%20consulta" 
+            target="_blank" 
+            class="whatsapp-btn"
+        >
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/WhatsApp_logo_2023.png" alt="WhatsApp" width="50" height="50"/>
+        </a>
+    </div>
     <main>
         <section>
             <h2>Why Choose Us?</h2>
