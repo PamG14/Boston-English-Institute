@@ -35,31 +35,48 @@
 
     <script type="text/javascript">
         // Function to verify certificate ID
-function verifyCertificate(certificateId) {
-    const resultDiv = document.getElementById('verification-result');
+        function verifyCertificate(certificateId) {
+            const resultDiv = document.getElementById('verification-result');
 
-    // Make the request to the backend API on Render
-    fetch('https://boston-english-institute.onrender.com/verify?cert_id=' + certificateId)
-        .then(response => response.json())  // Process the response as JSON
-        .then(data => {
-            if (data.status === 'Certificado válido') {
-                resultDiv.innerHTML = `
-                    <h3>${data.status}</h3>
-                    <p><strong>Nombre:</strong> ${data.student_name}</p>
-                    <p><strong>DNI:</strong> ${data.dni}</p>
-                    <p><strong>Curso:</strong> ${data.course}</p>
-                    <p><strong>Nivel:</strong> ${data.level}</p>
-                    <p><strong>Fecha de Emisión:</strong> ${data.issue_date}</p>
-                `;
+            // Make the request to the backend API on Render
+            fetch('https://boston-english-institute.onrender.com/verify?cert_id=' + encodeURIComponent(certificateId))
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.status === 'Certificado válido') {
+                        resultDiv.innerHTML = `
+                            <h3>${data.status}</h3>
+                            <p><strong>Nombre:</strong> ${data.student_name}</p>
+                            <p><strong>DNI:</strong> ${data.dni}</p>
+                            <p><strong>Curso:</strong> ${data.course}</p>
+                            <p><strong>Nivel:</strong> ${data.level}</p>
+                            <p><strong>Fecha de Emisión:</strong> ${data.issue_date}</p>
+                        `;
+                    } else {
+                        resultDiv.innerHTML = `<h3>${data.status}</h3>`;
+                    }
+                })
+                .catch(error => {
+                    resultDiv.innerHTML = `<h3>Error</h3><p>There was an error verifying the certificate. Please try again later.</p>`;
+                    console.error('Error fetching data:', error);
+                });
+        }
+
+        // Handle form submission
+        document.getElementById('certificate-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const certificateId = document.getElementById('certificate-id').value.trim();
+            if (certificateId) {
+                verifyCertificate(certificateId);
             } else {
-                resultDiv.innerHTML = `<h3>${data.status}</h3>`;
+                const resultDiv = document.getElementById('verification-result');
+                resultDiv.innerHTML = `<h3>Error</h3><p>Please enter a valid Certificate ID.</p>`;
             }
-        })
-        .catch(error => {
-            resultDiv.innerHTML = `<h3>Error</h3><p>There was an error verifying the certificate. Please try again later.</p>`;
-            console.error('Error fetching data:', error);
         });
-}
 
         // Check for cert_id in the URL
         const urlParams = new URLSearchParams(window.location.search);
