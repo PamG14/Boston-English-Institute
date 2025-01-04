@@ -59,7 +59,7 @@ def verify_certificate():
                 return jsonify({
                     'status': 'Certificado válido',
                     'student_name': row[1],  # Nombre del estudiante
-                    'dni': row[2],           # DNI del estudiante       
+                    'dni': row[2],           # DNI del estudiante
                     'course': row[3],        # Curso
                     'level': row[4],         # Nivel
                     'issue_date': row[5]     # Fecha de emisión
@@ -68,7 +68,7 @@ def verify_certificate():
         # Si no se encuentra el cert_id, retorna un error 404
         return jsonify({'status': 'Certificado no encontrado'}), 404
 
-        except Exception as e:
+    except Exception as e:
         # Si ocurre algún error, lo maneja y lo retorna en la respuesta
         return jsonify({'error': f'Error al consultar Google Sheets: {str(e)}'}), 500
 
