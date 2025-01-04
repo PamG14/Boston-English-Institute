@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verify Certificate</title>
@@ -37,9 +38,14 @@
         function verifyCertificate(certificateId) {
             const resultDiv = document.getElementById('verification-result');
 
-            // Make the request to the backend API on Replit
-            fetch(`https://7ee92e83-6519-4ed8-8e58-6591e70d0416-00-1jryvvmkoe8g0.riker.replit.dev/verify?cert_id=${certificateId}`)
-                .then(response => response.json())  // Process the response as JSON
+            // Make the request to the backend API on Render
+            fetch('https://boston-english-institute.onrender.com/verify?cert_id=' + encodeURIComponent(certificateId))
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     if (data.status === 'Certificado válido') {
                         resultDiv.innerHTML = `
@@ -60,14 +66,15 @@
                 });
         }
 
-        // Event listener for form submission
-        document.getElementById('certificate-form').addEventListener('submit', event => {
-            event.preventDefault();  // Prevent the default form submission
+        // Handle form submission
+        document.getElementById('certificate-form').addEventListener('submit', function(event) {
+            event.preventDefault();
             const certificateId = document.getElementById('certificate-id').value.trim();
             if (certificateId) {
                 verifyCertificate(certificateId);
             } else {
-                alert('Please enter a certificate ID');
+                const resultDiv = document.getElementById('verification-result');
+                resultDiv.innerHTML = `<h3>Error</h3><p>Please enter a valid Certificate ID.</p>`;
             }
         });
 
@@ -84,4 +91,3 @@
     </footer>
 </body>
 </html>
-
