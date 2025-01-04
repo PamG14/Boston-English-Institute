@@ -62,9 +62,10 @@ for row in rows:
         return jsonify({
             'status': 'Certificado válido',
             'student_name': row[1],  # Nombre del estudiante
-            'course': row[2],       # Curso
-            'level': row[3],        # Nivel
-            'issue_date': row[4]    # Fecha de emisión
+            'dni' :  row[2],  # dni del estudiante       
+            'course': row[3],       # Curso
+            'level': row[4],        # Nivel
+            'issue_date': row[5]    # Fecha de emisión
         })
 
 
