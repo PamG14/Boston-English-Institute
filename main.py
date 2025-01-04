@@ -68,7 +68,7 @@ def verify_certificate():
         # Si no se encuentra el cert_id, retorna un error 404
         return jsonify({'status': 'Certificado no encontrado'}), 404
 
-    except Exception as e:
+        except Exception as e:
         # Si ocurre algún error, lo maneja y lo retorna en la respuesta
         return jsonify({'error': f'Error al consultar Google Sheets: {str(e)}'}), 500
 
