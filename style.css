@@ -84,6 +84,32 @@ footer a {
 footer a:hover {
     color: #C8A2C8;  /* Optional: change color on hover */
 }
+
+/* Estilo para el botón flotante de WhatsApp */
+.whatsapp-widget {
+    position: fixed;
+    bottom: 20px; /* Asegura que esté en la parte inferior */
+    right: 20px;  /* Asegura que esté a la derecha */
+    z-index: 1000; /* Asegura que esté encima de otros elementos */
+}
+
+.whatsapp-btn {
+    display: block;
+    background-color: #25d366; /* Color verde de WhatsApp */
+    border-radius: 50%; /* Hace el botón redondo */
+    padding: 10px;
+}
+
+.whatsapp-btn img {
+    max-width: 100%;
+    border-radius: 50%;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe57; /* Un tono más oscuro para hover */
+}
+
+    
 /* Verification Page */
 .verify {
     padding: 20px;
