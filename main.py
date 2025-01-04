@@ -8,12 +8,16 @@ from flask_cors import CORS
 # Configuración de Flask
 app = Flask(__name__)
 
-# Configuración de CORS para permitir solicitudes desde GitHub Pages
+# Configuración de CORS
 CORS(app, resources={
     r"/verify/*": {
-        "origins": "https://pamg14.github.io",
-        "methods": ["GET", "OPTIONS"],
-        "allow_headers": ["Content-Type", "Authorization"]
+        "origins": [
+            "https://pamg14.github.io",  # Producción
+            "http://localhost:3000",    # Desarrollo local (opcional)
+            "http://127.0.0.1:5500"     # Otra opción local (opcional)
+        ],
+        "methods": ["GET", "OPTIONS"],  # Métodos permitidos
+        "allow_headers": ["Content-Type", "Authorization"]  # Encabezados permitidos
     }
 })
 
