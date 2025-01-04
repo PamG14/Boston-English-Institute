@@ -7,7 +7,7 @@ from flask_cors import CORS
 
 # Configuración de Flask
 app = Flask(__name__)
-CORS(app, resources={r"/verify/*": {"origins": "https://pamg14.github.io"}})
+CORS(app, resources={r"/verify/*": {"origins": "*"}})
 
 # Cargar credenciales desde variables de entorno
 credentials_json = os.getenv('GOOGLE_CREDENTIALS')
