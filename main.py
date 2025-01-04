@@ -7,12 +7,15 @@ from flask_cors import CORS
 
 # Configuración de Flask
 app = Flask(__name__)
+
+# Permite solicitudes CORS solo desde tu frontend en GitHub Pages
 CORS(app, resources={r"/verify/*": {"origins": "https://pamg14.github.io"}})
 
-# Cargar credenciales desde variables de entorno
-credentials_json = os.getenv('GOOGLE_CREDENTIALS')
+# Cargar las credenciales de Google Sheets desde las variables de entorno
+credentials_json = os.getenv('GOOGLE_CREDENTIALS')  # Asegúrate de tener la variable de entorno configurada
 if not credentials_json:
     raise ValueError("No se encontraron las credenciales en las variables de entorno")
+
 credentials_data = json.loads(credentials_json)
 credentials = service_account.Credentials.from_service_account_info(
     credentials_data,
@@ -20,10 +23,10 @@ credentials = service_account.Credentials.from_service_account_info(
 )
 
 # Configuración de la API de Google Sheets
-spreadsheet_id = '1TsIqRDMV-8Rv2xlx4oG_DLVxCOcxnfhWt6-q96x9qKw'  # Asegúrate de actualizar el ID de la hoja
-range_name = 'Hoja 1!A2:F'  # Ajusta el rango según tu hoja de cálculo
+spreadsheet_id = '1TsIqRDMV-8Rv2xlx4oG_DLVxCOcxnfhWt6-q96x9qKw'  # ID de la hoja de cálculo de Google Sheets
+range_name = 'Hoja 1!A2:F'  # Rango de celdas a consultar (ajústalo según tu hoja)
 
-# Ruta principal (agregada para evitar 404 al acceder a la raíz)
+# Ruta principal (para evitar 404 al acceder a la raíz)
 @app.route('/')
 def home():
     return "Bienvenido a la API de verificación de certificados"
@@ -31,16 +34,20 @@ def home():
 # Ruta para verificar certificados
 @app.route('/verify', methods=['GET'])
 def verify_certificate():
-    cert_id = request.args.get('cert_id')
+    cert_id = request.args.get('cert_id')  # Obtiene el parámetro 'cert_id' desde la URL
     if not cert_id:
         return jsonify({'error': 'No se proporcionó cert_id'}), 400
 
     try:
+        # Construye el servicio de Google Sheets utilizando las credenciales
         service = build('sheets', 'v4', credentials=credentials)
         sheet = service.spreadsheets()
-        result = sheet.values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
-        rows = result.get('values', [])
 
+        # Realiza la consulta para obtener los datos de la hoja
+        result = sheet.values().get(spreadsheetId=spreadsheet_id, range=range_name).execute()
+        rows = result.get('values', [])  # Obtiene las filas de la hoja de cálculo
+
+        # Verifica si el cert_id existe en la hoja
         for row in rows:
             if row[0] == cert_id:
                 return jsonify({
@@ -50,10 +57,13 @@ def verify_certificate():
                     'issue_date': row[3]
                 })
 
+        # Si no se encuentra el cert_id, retorna un error 404
         return jsonify({'status': 'Certificado no encontrado'}), 404
 
     except Exception as e:
+        # Si ocurre algún error, lo maneja y lo retorna en la respuesta
         return jsonify({'error': f'Error al consultar Google Sheets: {str(e)}'}), 500
 
+# Inicia la aplicación Flask (asegura que corra en todas las IPs del servidor)
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080)
