@@ -50,33 +50,41 @@
         <p>Contact us: <a href="contact.html">Reach out!</a></p>
     </footer>
 
-    <script>
-        document.getElementById('verify-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const certId = document.getElementById('cert_id').value;
-            
-            // Make the request to the backend API on Replit
-            fetch('https://boston-english-institute.onrender.com/verify?cert_id=' + certificateId) 
-                .then(response => response.json())
-                .then(data => {
-                    const resultDiv = document.getElementById('verification-result');
-                    if (data.status === 'Certificado válido') {
-                        resultDiv.innerHTML = `
-                            <h3>${data.status}</h3>
-                            <p><strong>Nombre:</strong> ${data.nombre}</p>
-                            <p><strong>Nivel:</strong> ${data.nivel}</p>
-                            <p><strong>Año:</strong> ${data.año}</p>
-                        `;
-                    } else {
-                        resultDiv.innerHTML = `<p>${data.status}</p>`;
-                    }
-                })
-                .catch(error => {
-                    const resultDiv = document.getElementById('verification-result');
-                    resultDiv.innerHTML = `<p>Error: ${error.message}</p>`;
-                });
-        });
-    </script>
+   <script>
+    document.getElementById('verify-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Evita que el formulario recargue la página
+        const certId = document.getElementById('cert_id').value; // Obtiene el valor del input
+
+        // Realiza la solicitud al backend en Render
+        fetch('https://boston-english-institute.onrender.com/verify?cert_id=' + certId)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('No se pudo verificar el certificado. Código de estado: ' + response.status);
+                }
+                return response.json();
+            })
+            .then(data => {
+                const resultDiv = document.getElementById('verification-result');
+                if (data.status === 'Certificado válido') {
+                    resultDiv.innerHTML = `
+                        <h3>${data.status}</h3>
+                        <p><strong>Nombre:</strong> ${data.student_name}</p>
+                        <p><strong>Curso:</strong> ${data.course}</p>
+                        <p><strong>Nivel:</strong> ${data.level}</p>
+                        <p><strong>Fecha de Emisión:</strong> ${data.issue_date}</p>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `<h3>${data.status}</h3><p>El certificado no fue encontrado.</p>`;
+                }
+            })
+            .catch(error => {
+                const resultDiv = document.getElementById('verification-result');
+                resultDiv.innerHTML = `<h3>Error</h3><p>${error.message}</p>`;
+                console.error('Error fetching data:', error);
+            });
+    });
+</script>
+
 </body>
 </html>
 
