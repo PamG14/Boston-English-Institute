@@ -55,19 +55,15 @@ def verify_certificate():
 
         # Verifica si el cert_id existe en la hoja
         for row in rows:
-            if row[0] == cert_id:
+            if row[0] == cert_id:  # Compara el cert_id
                 return jsonify({
-for row in rows:
-    if row[0] == cert_id:  # Compara el cert_id
-        return jsonify({
-            'status': 'Certificado válido',
-            'student_name': row[1],  # Nombre del estudiante
-            'dni' :  row[2],  # dni del estudiante       
-            'course': row[3],       # Curso
-            'level': row[4],        # Nivel
-            'issue_date': row[5]    # Fecha de emisión
-        })
-
+                    'status': 'Certificado válido',
+                    'student_name': row[1],  # Nombre del estudiante
+                    'dni': row[2],           # DNI del estudiante       
+                    'course': row[3],        # Curso
+                    'level': row[4],         # Nivel
+                    'issue_date': row[5]     # Fecha de emisión
+                })
 
         # Si no se encuentra el cert_id, retorna un error 404
         return jsonify({'status': 'Certificado no encontrado'}), 404
