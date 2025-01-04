@@ -84,6 +84,24 @@ footer a {
 footer a:hover {
     color: #C8A2C8;  /* Optional: change color on hover */
 }
+
+.btn-whatsapp {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #25d366; /* Color verde de WhatsApp */
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.btn-whatsapp:hover {
+    background-color: #1ebe57; /* Un tono más oscuro para hover */
+}
+
+    
 /* Verification Page */
 .verify {
     padding: 20px;
