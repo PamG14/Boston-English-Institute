@@ -34,42 +34,31 @@
 
     <script type="text/javascript">
         // Function to verify certificate ID
-        function verifyCertificate(certificateId) {
-            const resultDiv = document.getElementById('verification-result');
+function verifyCertificate(certificateId) {
+    const resultDiv = document.getElementById('verification-result');
 
-            // Make the request to the backend API on Replit
-            fetch('https://boston-english-institute.onrender.com/verify?cert_id=' + certId)
-                .then(response => response.json())  // Process the response as JSON
-                .then(data => {
-                    if (data.status === 'Certificado válido') {
-                        resultDiv.innerHTML = `
-                            <h3>${data.status}</h3>
-                            <p><strong>Nombre:</strong> ${data.student_name}</p>
-                            <p><strong>DNI:</strong> ${data.dni}</p>
-                            <p><strong>Curso:</strong> ${data.course}</p>
-                            <p><strong>Nivel:</strong> ${data.level}</p>
-                            <p><strong>Fecha de Emisión:</strong> ${data.issue_date}</p>
-                        `;
-                    } else {
-                        resultDiv.innerHTML = `<h3>${data.status}</h3>`;
-                    }
-                })
-                .catch(error => {
-                    resultDiv.innerHTML = `<h3>Error</h3><p>There was an error verifying the certificate. Please try again later.</p>`;
-                    console.error('Error fetching data:', error);
-                });
-        }
-
-        // Event listener for form submission
-        document.getElementById('certificate-form').addEventListener('submit', event => {
-            event.preventDefault();  // Prevent the default form submission
-            const certificateId = document.getElementById('certificate-id').value.trim();
-            if (certificateId) {
-                verifyCertificate(certificateId);
+    // Make the request to the backend API on Render
+    fetch('https://boston-english-institute.onrender.com/verify?cert_id=' + certificateId)
+        .then(response => response.json())  // Process the response as JSON
+        .then(data => {
+            if (data.status === 'Certificado válido') {
+                resultDiv.innerHTML = `
+                    <h3>${data.status}</h3>
+                    <p><strong>Nombre:</strong> ${data.student_name}</p>
+                    <p><strong>DNI:</strong> ${data.dni}</p>
+                    <p><strong>Curso:</strong> ${data.course}</p>
+                    <p><strong>Nivel:</strong> ${data.level}</p>
+                    <p><strong>Fecha de Emisión:</strong> ${data.issue_date}</p>
+                `;
             } else {
-                alert('Please enter a certificate ID');
+                resultDiv.innerHTML = `<h3>${data.status}</h3>`;
             }
+        })
+        .catch(error => {
+            resultDiv.innerHTML = `<h3>Error</h3><p>There was an error verifying the certificate. Please try again later.</p>`;
+            console.error('Error fetching data:', error);
         });
+}
 
         // Check for cert_id in the URL
         const urlParams = new URLSearchParams(window.location.search);
