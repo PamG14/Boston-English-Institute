@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0.5;
     padding: 0;
-    background-color: #efecdf;
+    background-color: #f8f8ff;
     line-height: 1.6;
 }
 
@@ -30,7 +30,7 @@ body {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background: #C8A2C8;
+    background: #f8f8ff;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -88,8 +88,8 @@ footer a:hover {
 /* Estilo para el botón flotante de WhatsApp */
 .whatsapp-widget {
     position: fixed;
-    bottom: 20px; /* Asegura que esté en la parte inferior */
-    right: 20px;  /* Asegura que esté a la derecha */
+    bottom: 15px; /* Asegura que esté en la parte inferior */
+    left: 15px;  /* Asegura que esté a la derecha */
     z-index: 1000; /* Asegura que esté encima de otros elementos */
 }
 
@@ -153,7 +153,7 @@ footer a:hover {
 }
 
 .verify button:hover {
-    background-color: #FF5733;
+    background-color: #f8f8ff;
 }
 
 #qr-code-section {
