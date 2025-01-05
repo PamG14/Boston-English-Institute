@@ -13,15 +13,17 @@
         <p>Empowering students to achieve fluency and confidence in English.</p>
         <a href="courses.html" class="cta-button">Explore Our Courses</a>
     </header>
-    <nav>
+    <nav class="navbar">
+        <img src="logo.png" alt="Institute Logo" class="logo">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="courses.html">Courses</a>
         <a href="contact.html">Contact</a>
-        <a href="verify.html">Verify Certificate</a> <!-- New link here -->
+        <a href="verify.html">Verify Certificate</a>
+        <a href="#offerings">Our Offerings</a>
     </nav>
     <main>
-        <section class="services">
+        <section class="services" id="offerings">
             <h2>Our Offerings</h2>
             <div class="service">
                 <h3>Beginner Courses</h3>
@@ -44,14 +46,11 @@
                 <li>Flexible learning schedules.</li>
             </ul>
         </section>
-        
     </main>
-  
     <footer>
         <p>© 2020 Boston English Institute. All rights reserved.</p>
         <p>Contact us: <a href="contact.html">Reach out!</a></p>
     </footer>
-  
     <!-- WhatsApp Button Floating -->
     <div class="whatsapp-widget">
         <a 
@@ -62,8 +61,7 @@
             <img src="https://images.seeklogo.com/logo-png/28/2/whatsapp-icon-logo-png_seeklogo-285144.png?v=1958568723792607320" alt="WhatsApp" width="50" height="50"/>
         </a>
     </div>
-    
-   <script>
+    <script>
     document.getElementById('verify-form').addEventListener('submit', function(event) {
         event.preventDefault(); // Evita que el formulario recargue la página
         const certId = document.getElementById('cert_id').value; // Obtiene el valor del input
@@ -97,9 +95,6 @@
                 console.error('Error fetching data:', error);
             });
     });
-</script>
-
+    </script>
 </body>
 </html>
-
-
