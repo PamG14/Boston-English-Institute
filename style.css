@@ -182,44 +182,59 @@ footer a:hover {
     width: 200px;
     height: 200px;
 }
-.popup {
-    display: none; /* Ocultar por defecto */
+/* Notification style */
+.notification {
+    display: none; /* Oculto por defecto */
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
-    z-index: 1000;
-}
-
-.popup-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    width: 80%;
-    max-width: 400px;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
     border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    overflow: hidden;
+    animation: fadeIn 0.3s ease-out;
 }
 
-.popup-content h3 {
-    margin-bottom: 10px;
+.notification-content {
+    padding: 15px;
+    position: relative;
 }
 
-.close {
+.notification h3 {
+    margin: 0 0 10px;
+}
+
+.notification p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+
+.notification .close {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 1.5em;
-    color: #999;
+    font-size: 18px;
+    font-weight: bold;
+    color: #888;
     cursor: pointer;
 }
 
-.close:hover {
+.notification .close:hover {
     color: #333;
+}
+
+/* Animation for fade-in effect */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
