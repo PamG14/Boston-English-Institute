@@ -49,22 +49,38 @@ body {
 }
 
 /* Navigation */
-nav {
-    text-align: center;
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     background: #333;
-    padding: 15px 0;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-nav a {
+.navbar .logo {
+    height: 50px;
+}
+
+.navbar a {
     color: #f5f5f5;
-    margin: 0 20px;
+    margin: 0 10px;
     text-decoration: none;
     font-weight: 300;
     transition: color 0.3s;
 }
 
-nav a:hover {
+.navbar a:hover {
     color: #d4af37; /* Gold accent */
+}
+
+/* Main Content Padding Adjustment */
+main {
+    padding-top: 80px; /* To avoid content being hidden under the fixed navbar */
 }
 
 /* Services Section */
@@ -131,110 +147,8 @@ footer a:hover {
     background-color: #1ebe57;
 }
 
-/* Verification Page */
-.verify {
-    padding: 40px 20px;
-    text-align: center;
-    background-color: #fff;
+/* Additional Fixes */
+#offerings {
+    scroll-margin-top: 100px; /* Ensures proper scroll alignment for fixed navbar */
 }
 
-.verify h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    font-weight: 400;
-    color: #333;
-}
-
-.verify p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-    color: #666;
-}
-
-.verify input,
-.verify button {
-    padding: 12px;
-    font-size: 1em;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    width: 100%;
-    max-width: 400px;
-}
-
-.verify button {
-    background-color: #d4af37;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.verify button:hover {
-    background-color: #b8922e;
-}
-
-#qr-code-section {
-    margin-top: 30px;
-}
-
-#qr-code-image {
-    width: 200px;
-    height: 200px;
-}
-/* Notification style */
-.notification {
-    display: none; /* Oculto por defecto */
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    overflow: hidden;
-    animation: fadeIn 0.3s ease-out;
-}
-
-.notification-content {
-    padding: 15px;
-    position: relative;
-}
-
-.notification h3 {
-    margin: 0 0 10px;
-}
-
-.notification p {
-    margin: 5px 0;
-    font-size: 14px;
-    color: #555;
-}
-
-.notification .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    color: #888;
-    cursor: pointer;
-}
-
-.notification .close:hover {
-    color: #333;
-}
-
-/* Animation for fade-in effect */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
