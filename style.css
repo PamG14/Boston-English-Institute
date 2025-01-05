@@ -1,10 +1,11 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0.5;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 0;
     padding: 0;
-    background-color: #f8f8ff;
-    line-height: 1.6;
+    background-color: #f5f5f5;
+    line-height: 1.8;
+    color: #333;
 }
 
 /* Header (Hero Section) */
@@ -12,92 +13,113 @@ body {
     background: url('bostonbridge.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
-    padding: 100px 20px;
-}
+    padding: 120px 20px;
+    position: relative;
 }
 
 .hero h1 {
-    font-size: 2.5em;
+    font-size: 3em;
+    font-weight: 300;
     margin: 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
 .hero p {
-    font-size: 1.2em;
-    margin: 10px 0;
+    font-size: 1.5em;
+    margin: 15px 0;
 }
 
 .cta-button {
     display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
+    margin-top: 30px;
+    padding: 12px 30px;
     background: #f8f8ff;
-    color: white;
+    color: #333;
     text-decoration: none;
     border-radius: 5px;
     font-size: 1em;
+    border: 2px solid white;
+    transition: background 0.3s, color 0.3s;
+}
+
+.cta-button:hover {
+    background: white;
+    color: #333;
 }
 
 /* Navigation */
 nav {
     text-align: center;
-    margin: 20px 0;
     background: #333;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
 nav a {
-    color: white;
-    margin: 0 15px;
+    color: #f5f5f5;
+    margin: 0 20px;
     text-decoration: none;
+    font-weight: 300;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #d4af37; /* Gold accent */
 }
 
 /* Services Section */
 .services {
-    padding: 20px;
+    padding: 40px 20px;
     text-align: center;
-    background-color: #efecdf;
+    background-color: #fff;
 }
 
 .service {
-    margin: 10px 0;
+    margin: 15px 0;
+    font-size: 1.1em;
+    color: #666;
 }
 
 /* Testimonials Section */
 .testimonials {
-    padding: 20px;
-    background: #eee;
+    padding: 40px 20px;
+    background: #f8f8f8;
     text-align: center;
+    color: #555;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
+    padding: 30px;
     background: #333;
-    color: white;
-    position: relative;
+    color: #f5f5f5;
+}
 
 footer a {
-    color: #C8A2C8;  /* Replace with your desired color */
+    color: #d4af37; /* Gold accent */
+    text-decoration: none;
 }
 
 footer a:hover {
-    color: #C8A2C8;  /* Optional: change color on hover */
+    text-decoration: underline;
 }
 
-/* Estilo para el botón flotante de WhatsApp */
+/* WhatsApp Button */
 .whatsapp-widget {
     position: fixed;
-    bottom: 15px; /* Asegura que esté en la parte inferior */
-    left: 15px;  /* Asegura que esté a la derecha */
-    z-index: 1000; /* Asegura que esté encima de otros elementos */
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
 }
 
 .whatsapp-btn {
     display: block;
-    background-color: #25d366; /* Color verde de WhatsApp */
-    border-radius: 50%; /* Hace el botón redondo */
-    padding: 10px;
+    background-color: #25d366;
+    border-radius: 50%;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
 }
 
 .whatsapp-btn img {
@@ -105,55 +127,51 @@ footer a:hover {
     border-radius: 50%;
 }
 
-.btn-whatsapp:hover {
-    background-color: #1ebe57; /* Un tono más oscuro para hover */
+.whatsapp-btn:hover {
+    background-color: #1ebe57;
 }
 
-    
 /* Verification Page */
 .verify {
-    padding: 20px;
+    padding: 40px 20px;
     text-align: center;
+    background-color: #fff;
 }
 
 .verify h2 {
-    font-size: 2em;
+    font-size: 2.5em;
     margin-bottom: 20px;
+    font-weight: 400;
+    color: #333;
 }
 
 .verify p {
     font-size: 1.2em;
     margin-bottom: 20px;
+    color: #666;
 }
 
-.verify form {
-    margin-bottom: 30px;
-}
-
-.verify label {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-
-.verify input {
-    padding: 10px;
+.verify input,
+.verify button {
+    padding: 12px;
     font-size: 1em;
     margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    width: 100%;
+    max-width: 400px;
 }
 
 .verify button {
-    padding: 10px 20px;
-    font-size: 1.1em;
-    background-color: #C8A2C8;
+    background-color: #d4af37;
     color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    transition: background 0.3s;
 }
 
 .verify button:hover {
-    background-color: #f8f8ff;
+    background-color: #b8922e;
 }
 
 #qr-code-section {
@@ -161,8 +179,6 @@ footer a:hover {
 }
 
 #qr-code-image {
-    width: 200px; /* Adjust size of QR code */
+    width: 200px;
     height: 200px;
-}
-
 }
