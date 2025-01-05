@@ -27,16 +27,25 @@
                 <input type="text" id="certificate-id" name="certificate-id" placeholder="Certificate ID" required>
                 <button type="submit">Verify</button>
             </form>
-
-            <!-- Section to display verification results -->
-            <div id="verification-result"></div>
         </section>
     </main>
+
+    <!-- Popup for displaying verification results -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <div id="popup-message"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2020 Boston English Institute. All rights reserved.</p>
+    </footer>
 
     <script type="text/javascript">
         // Function to verify certificate ID
         function verifyCertificate(certificateId) {
-            const resultDiv = document.getElementById('verification-result');
+            const popupMessage = document.getElementById('popup-message');
 
             // Make the request to the backend API on Render
             fetch('https://boston-english-institute.onrender.com/verify?cert_id=' + encodeURIComponent(certificateId))
@@ -48,7 +57,7 @@
                 })
                 .then(data => {
                     if (data.status === 'Certificado válido') {
-                        resultDiv.innerHTML = `
+                        popupMessage.innerHTML = `
                             <h3>${data.status}</h3>
                             <p><strong>Nombre:</strong> ${data.student_name}</p>
                             <p><strong>DNI:</strong> ${data.dni}</p>
@@ -57,12 +66,18 @@
                             <p><strong>Fecha de Emisión:</strong> ${data.issue_date}</p>
                         `;
                     } else {
-                        resultDiv.innerHTML = `<h3>${data.status}</h3>`;
+                        popupMessage.innerHTML = `<h3>${data.status}</h3>`;
                     }
+
+                    // Show the popup
+                    document.getElementById('popup').style.display = 'block';
                 })
                 .catch(error => {
-                    resultDiv.innerHTML = `<h3>Error</h3><p>There was an error verifying the certificate. Please try again later.</p>`;
+                    popupMessage.innerHTML = `<h3>Error</h3><p>There was an error verifying the certificate. Please try again later.</p>`;
                     console.error('Error fetching data:', error);
+
+                    // Show the popup
+                    document.getElementById('popup').style.display = 'block';
                 });
         }
 
@@ -73,8 +88,22 @@
             if (certificateId) {
                 verifyCertificate(certificateId);
             } else {
-                const resultDiv = document.getElementById('verification-result');
-                resultDiv.innerHTML = `<h3>Error</h3><p>Please enter a valid Certificate ID.</p>`;
+                const popupMessage = document.getElementById('popup-message');
+                popupMessage.innerHTML = `<h3>Error</h3><p>Please enter a valid Certificate ID.</p>`;
+                document.getElementById('popup').style.display = 'block';
+            }
+        });
+
+        // Close popup when clicking on the "X"
+        document.querySelector('.popup .close').addEventListener('click', function () {
+            document.getElementById('popup').style.display = 'none';
+        });
+
+        // Close popup when clicking outside the content
+        window.addEventListener('click', function (event) {
+            const popup = document.getElementById('popup');
+            if (event.target === popup) {
+                popup.style.display = 'none';
             }
         });
 
@@ -85,9 +114,5 @@
             verifyCertificate(certIdFromURL); // Automatically verify if cert_id is present in the URL
         }
     </script>
-
-    <footer>
-        <p>© 2020 Boston English Institute. All rights reserved.</p>
-    </footer>
 </body>
 </html>
