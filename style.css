@@ -30,34 +30,34 @@ body {
 
 .image-container {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* Center the images horizontally */
     gap: 20px; /* Space between images */
-    flex-wrap: wrap; /* Allows images to wrap on smaller screens */
 }
 
 .image-item {
-    max-width: 25%; /* Limits images to a quarter of the screen width */
+    max-width: 25%; /* Limits the width to a quarter of the parent container */
     height: auto; /* Maintains aspect ratio */
     border-radius: 10px; /* Optional: Adds rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for a polished look */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for visual appeal */
     transition: transform 0.3s ease; /* Adds a hover effect */
 }
 
 .image-item:hover {
-    transform: scale(1.05); /* Slightly enlarges image on hover */
+    transform: scale(1.05); /* Slightly enlarges the image on hover */
 }
 
 .image-container a {
     text-decoration: none;
     color: #333;
+    text-align: center; /* Ensures text alignment under the image */
 }
 
 .image-container p {
     margin-top: 10px;
     font-size: 1em;
     color: #666;
-    text-align: center;
 }
+
 
 
 /* Hero Section */
