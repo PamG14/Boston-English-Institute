@@ -49,21 +49,24 @@ body {
 }
 
 /* Navigation */
+/* Estilos de navegación */
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #333;
-    padding: 10px 20px;
     position: fixed;
     top: 0;
+    left: 0;
     width: 100%;
+    background: #333;
+    padding: 10px 20px;
     z-index: 1000;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .navbar .logo {
     height: 50px;
+    margin-right: 20px;
 }
 
 .navbar a {
@@ -77,6 +80,12 @@ body {
 .navbar a:hover {
     color: #d4af37; /* Gold accent */
 }
+
+/* Ajuste del contenido para evitar que se solape con la barra */
+main {
+    padding-top: 80px; /* Altura de la barra de navegación */
+}
+
 
 /* Main Content Padding Adjustment */
 main {
