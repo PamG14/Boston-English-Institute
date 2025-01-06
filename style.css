@@ -12,13 +12,51 @@ header {
 
 /* Body Styles */
 body {
-    margin: 0; /* Elimina márgenes globales */
+    margin: 0.5; /* Elimina márgenes globales */
    
     font-family: 'Helvetica Neue', Arial, sans-serif;
     padding: 0;
     background-color: #f5f5f5;
     line-height: 1.8;
     color: #333;
+}
+
+/* Images Section */
+.images-section {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between images */
+    flex-wrap: wrap; /* Allows images to wrap on smaller screens */
+}
+
+.image-item {
+    max-width: 25%; /* Limits images to a quarter of the screen width */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for a polished look */
+    transition: transform 0.3s ease; /* Adds a hover effect */
+}
+
+.image-item:hover {
+    transform: scale(1.05); /* Slightly enlarges image on hover */
+}
+
+.image-container a {
+    text-decoration: none;
+    color: #333;
+}
+
+.image-container p {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #666;
+    text-align: center;
 }
 
 
