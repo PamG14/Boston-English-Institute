@@ -56,6 +56,8 @@ body {
 .logo {
     height: 50px;
     margin-right: 10px;
+    border-radius: 50%; /* Hace que el logo sea redondo */
+    overflow: hidden; /* Asegura que los bordes no sobresalgan */
 }
 
 .institute-name {
@@ -150,6 +152,7 @@ footer a:hover {
 #offerings {
     scroll-margin-top: 100px; /* Ensures proper scroll alignment for fixed navbar */
 }
+
 
 
 
