@@ -119,7 +119,7 @@ main {
     display: block;
     background-color: #25d366;
     border-radius: 50%;
-    padding: 8px;
+    padding: 6px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background 0.3s;
 }
