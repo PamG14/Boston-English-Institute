@@ -7,6 +7,8 @@
 
 /* Body Styles */
 body {
+
+    margin-top: 80px; /* Ajusta según la altura de la navbar */
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
     padding: 0;
