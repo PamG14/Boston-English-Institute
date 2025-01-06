@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        fetch("navbar.html")
-            .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML("afterbegin", data);
-            });
-    });
-</script>
     <title>About Us</title>
     <link rel="stylesheet" href="style.css">
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("navbar.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.body.insertAdjacentHTML("afterbegin", data);
+                });
+        });
+    </script>
 </head>
-<body>  {
-    margin-top: 80px; /* Asegúrate de que coincida con la altura de la navbar */
-}
-    <header>
+<body>
+    <!-- Navbar se cargará dinámicamente con JavaScript -->
 
+    <header>
         <h1>About Us</h1>
     </header>
 
     <main>
         <section>
-            <p> Welcome to Boston English Institute. Our mission is to make learning English accessible and enjoyable for everyone..</p>
+            <p>
+                Welcome to Boston English Institute. Our mission is to make learning 
+                English accessible and enjoyable for everyone.
+            </p>
         </section>
     </main>
+
     <footer>
+        <p>© 2020 Boston English Institute</p>
+    </footer>
+</body>
+</html>
+
         <p>© 2020 Boston English Institute</p>
     </footer>
 </body>
