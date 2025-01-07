@@ -35,8 +35,8 @@ body {
 }
 
 .image-item {
-    width: 350px; /* Fixed width for all images */
-    height: 350px; /* Fixed height for all images */
+    width: 320px; /* Fixed width for all images */
+    height: 320px; /* Fixed height for all images */
     object-fit: cover; /* Ensures images maintain aspect ratio and fill the box */
     border-radius: 10px; /* Optional: Adds rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for visual appeal */
@@ -163,7 +163,7 @@ main {
     display: block;
     background-color: #25d366;
     border-radius: 50%;
-    padding: 6px;
+    padding: 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     transition: background 0.3s;
 }
