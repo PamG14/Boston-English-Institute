@@ -24,14 +24,14 @@ body {
 /* Images Section */
 .images-section {
     text-align: center;
-    padding: 20px;
+    padding: 15px;
     background-color: #f9f9f9;
 }
 
 .image-container {
     display: flex;
     justify-content: center; /* Center the images horizontally */
-    gap: 15px; /* Space between images */
+    gap: 10px; /* Space between images */
 }
 
 .image-item {
