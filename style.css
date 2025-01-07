@@ -35,7 +35,7 @@ body {
 }
 
 .image-item {
-    max-width: 60%; /* Limits the width to a quarter of the parent container */
+    max-width: 55%; /* Limits the width to a quarter of the parent container */
     height: auto; /* Maintains aspect ratio */
     border-radius: 10px; /* Optional: Adds rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for visual appeal */
