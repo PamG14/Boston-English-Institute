@@ -35,8 +35,9 @@ body {
 }
 
 .image-item {
-    max-width: 55%; /* Limits the width to a quarter of the parent container */
-    height: auto; /* Maintains aspect ratio */
+    width: 200px; /* Fixed width for all images */
+    height: 200px; /* Fixed height for all images */
+    object-fit: cover; /* Ensures images maintain aspect ratio and fill the box */
     border-radius: 10px; /* Optional: Adds rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for visual appeal */
     transition: transform 0.3s ease; /* Adds a hover effect */
