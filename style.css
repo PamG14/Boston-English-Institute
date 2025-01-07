@@ -1,7 +1,7 @@
 /* General Reset */
 * {
     margin: 0;
-    padding: 0;
+    padding: 10px;
     box-sizing: border-box;
 }
 
@@ -12,7 +12,7 @@ header {
 
 /* Body Styles */
 body {
-    margin: 0.5; /* Elimina márgenes globales */
+    margin: 0; /* Elimina márgenes globales */
    
     font-family: 'Helvetica Neue', Arial, sans-serif;
     padding: 0;
