@@ -31,7 +31,7 @@ body {
 .image-container {
     display: flex;
     justify-content: center; /* Center the images horizontally */
-    gap: 20px; /* Space between images */
+    gap: 15px; /* Space between images */
 }
 
 .image-item {
