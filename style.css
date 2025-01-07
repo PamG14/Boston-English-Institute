@@ -35,8 +35,8 @@ body {
 }
 
 .image-item {
-    width: 200px; /* Fixed width for all images */
-    height: 200px; /* Fixed height for all images */
+    width: 350px; /* Fixed width for all images */
+    height: 350px; /* Fixed height for all images */
     object-fit: cover; /* Ensures images maintain aspect ratio and fill the box */
     border-radius: 10px; /* Optional: Adds rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: Adds shadow for visual appeal */
