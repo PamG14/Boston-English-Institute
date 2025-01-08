@@ -71,14 +71,11 @@ body {
     }
 }
 
-/* Header Adjustment */
-header {
-    margin-top: 80px; /* Ajusta este valor según la altura de tu barra de navegación */
-}
+
 
 /* Main Content Padding */
 main {
-    padding-top: 100px; /* Espaciado para evitar superposición con la navbar */
+
     padding-left: 10px;
     padding-right: 10px;
 }
