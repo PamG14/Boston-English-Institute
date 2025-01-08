@@ -11,6 +11,20 @@
     <a href="resources.html">Resources</a>
     
 </nav>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const navbar = document.querySelector('.navbar');
+        const root = document.documentElement;
+
+        if (navbar) {
+            const observer = new ResizeObserver(() => {
+                root.style.setProperty('--navbar-height', `${navbar.offsetHeight}px`);
+            });
+
+            observer.observe(navbar);
+        }
+    });
+</script>
 <div class="whatsapp-widget">
     <a 
         href="https://wa.me/+5492236903280?text=Hola,%20quiero%20hacer%20una%20consulta" 
