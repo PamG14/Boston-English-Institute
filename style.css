@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+/* Header Adjustment */
+header {
+    margin-top: 80px; /* Ajusta este valor según la altura de tu barra de navegación */
+}
+
 /* Body Styles */
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
