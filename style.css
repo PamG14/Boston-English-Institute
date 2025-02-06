@@ -198,6 +198,23 @@ main {
     position: relative;
     z-index: 2;
 }
+.cta-button {
+    display: inline-block;
+    background-color: #d4af37; /* Color dorado */
+    color: #fff; /* Texto blanco */
+    font-size: 1.2em;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cta-button:hover {
+    background-color: #b4952c; /* Color dorado más oscuro al pasar el mouse */
+    transform: scale(1.05);
+}
+
 
 /* Services Section */
 .services {
