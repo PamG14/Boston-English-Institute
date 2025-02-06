@@ -12,7 +12,38 @@
     </script>
     <title>Resources - Boston English Institute</title>
     <link rel="stylesheet" href="style.css">
-
+    <style>
+        /* Styles for Thumbnails */
+        .resources {
+            padding: 20px;
+        }
+        .resource-item {
+            display: inline-block;
+            margin: 10px;
+            text-align: center;
+            width: 200px;
+        }
+        .resource-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        .resource-item img:hover {
+            transform: scale(1.05);
+        }
+        .resource-item p {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #333;
+        }
+        .resources-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    </style>
 </head>
 <body>
     <!-- The navbar will be included automatically by your script -->
