@@ -283,6 +283,32 @@ footer a:hover {
     scroll-margin-top: 100px;
 }
 
+.about {
+    max-width: 800px;  /* Para que el texto no se vea demasiado extendido en pantallas grandes */
+    margin: 40px auto; /* Centrar la sección */
+    text-align: center;
+    line-height: 1.6;  /* Espaciado entre líneas */
+    font-size: 1.1em;
+    color: #333; /* Un color más suave que el negro puro */
+}
+
+.about h2 {
+    font-size: 2em;
+    color: #d4af37; /* Color dorado para resaltar */
+    margin-bottom: 15px;
+}
+
+.about p {
+    margin-bottom: 15px; /* Espacio entre párrafos */
+}
+
+/* Opcional: Agregar un fondo sutil */
+.about {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
 
 
 
