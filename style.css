@@ -16,6 +16,8 @@ body {
     line-height: 1.8;
     color: #333;
     padding: 0 10px; /* Márgenes laterales para evitar contenido pegado al borde */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 header h1 {
     font-size: 2.5em;
@@ -50,6 +52,33 @@ header h1 {
     font-size: 1.1em;
     line-height: 1.6;
 }
+
+.course p {
+    margin-bottom: 15px; /* Espacio entre párrafos */
+}
+
+/* Opcional: Agregar un fondo sutil */
+.course {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+course.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+
+
+
+
+
+
+
 
 /* Navigation Bar */
 .navbar {
