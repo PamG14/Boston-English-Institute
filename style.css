@@ -284,13 +284,18 @@ footer a:hover {
 }
 
 .about {
-    max-width: 800px;  /* Para que el texto no se vea demasiado extendido en pantallas grandes */
-    margin: 40px auto; /* Centrar la sección */
-    text-align: center;
-    line-height: 1.6;  /* Espaciado entre líneas */
-    font-size: 1.1em;
-    color: #333; /* Un color más suave que el negro puro */
+    max-width: 800px; /* Hace que el texto no sea muy ancho en pantallas grandes */
+    margin: 40px auto; /* Centra la sección */
+    text-align: justify; /* Alineación justificada para mejor legibilidad */
+    line-height: 1.6; /* Espaciado entre líneas */
+    font-size: 1.1em; /* Tamaño de letra adecuado */
+    color: #333; /* Un color más suave que el negro */
+    padding: 20px;
+    background: #f9f9f9; /* Fondo suave */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
+
 
 .about h2 {
     font-size: 2em;
