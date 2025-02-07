@@ -17,6 +17,39 @@ body {
     color: #333;
     padding: 0 10px; /* Márgenes laterales para evitar contenido pegado al borde */
 }
+header h1 {
+    font-size: 2.5em;
+    color: #d4af37;
+    margin-bottom: 20px;
+}
+
+.courses {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.course {
+    background: white;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.course h2 {
+    color: #b4952c;
+    font-size: 1.8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.course p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
 
 /* Navigation Bar */
 .navbar {
