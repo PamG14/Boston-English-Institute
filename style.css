@@ -329,6 +329,12 @@ footer a:hover {
 .about img {
     max-width: 40%;
     border-radius: 10px;
+    max-width: 320px; /* Ancho máximo en pantallas grandes */
+    height: 320px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
 }
 
 
