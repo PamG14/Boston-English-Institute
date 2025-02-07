@@ -283,7 +283,12 @@ footer a:hover {
     scroll-margin-top: 100px;
 }
 
-
+section{
+    border-style: solid;    /* Crea un borde sólido */
+    border-color:black;   /* Colorea el borde con el color rojo*/
+    margin: 10%;    /* Agrega un margen alrededor de la section */
+    display: flex;  /* Agrega el display flex */
+}
 
 
 
