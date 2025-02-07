@@ -315,6 +315,21 @@ footer a:hover {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about img {
+    max-width: 40%;
+    border-radius: 10px;
+}
 
 
 
