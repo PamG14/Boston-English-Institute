@@ -1,4 +1,4 @@
-  document.addEventListener("DOMContentLoaded", function () {
+          document.addEventListener("DOMContentLoaded", function () {
             const chatButton = document.getElementById("chat-button");
             const chatContainer = document.getElementById("chat-container");
             const closeChat = document.getElementById("close-chat");
@@ -56,9 +56,13 @@
                 chatBox.scrollTop = chatBox.scrollHeight;
             }
 
-            chatButton.addEventListener("click", function () {
-                chatContainer.classList.toggle("hidden");
-            });
+               if (chatContainer.style.display === "none" || chatContainer.style.display === "") {
+              chatContainer.style.display = "block";
+                } else {
+                chatContainer.style.display = "none";
+}
+
+          
 
             closeChat.addEventListener("click", function () {
                 chatContainer.classList.add("hidden");
