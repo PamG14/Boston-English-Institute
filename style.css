@@ -389,10 +389,9 @@ footer a:hover {
 .about img {
     max-width: 40%;
     border-radius: 10px;
-    max-width: 225px; /* Ancho máximo en pantallas grandes */
-    height: 225px;
+    max-width: 200px; /* Ancho máximo en pantallas grandes */
+    height: 200px;
     object-fit: cover;
-    border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
 }
@@ -428,7 +427,7 @@ footer a:hover {
     animation: slideInLeft 1s ease-out forwards;
 }
 
-/* Animación para que ".resources" entre desde la derecha */
+/* Animación para que ".course" entre desde la derecha */
 .course {
     animation: slideInRight 1s ease-out forwards;
 }
@@ -474,4 +473,41 @@ footer a:hover {
 
 .bunny-icon {
     animation: bounce 0.6s ease-in-out;
+}
+#chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-box {
+    height: 250px;
+    overflow-y: auto;
+    background: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#user-input {
+    width: 80%;
+    padding: 5px;
+}
+
+#send-button {
+    width: 18%;
+    padding: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
