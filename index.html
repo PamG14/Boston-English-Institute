@@ -84,22 +84,24 @@
         <p>© 2020 Boston English Institute. All rights reserved.</p>
         <p>Contact us: <a href="contact.html">Reach out!</a></p>
     </footer>
-<!-- Botón flotante con Vainilla -->
-<div id="chat-toggle">
-    <img src="conejo.png" alt="Vainilla" class="bunny-icon">
-    <span class="chat-bubble">¿Tenés alguna duda?</span>
-</div>
-
-<!-- Contenedor del chat (inicialmente oculto) -->
-<div id="chat-container" class="hidden">
-    <div id="chat-header">
-        <span>Vainilla - Asistente</span>
-        <button id="close-chat">X</button>
+ <!-- Botón flotante para abrir el chat -->
+    <div id="chat-button">
+        <div class="chat-bubble">¿Tienes alguna duda?</div>
+        <img src="conejo.png" alt="Vainilla" class="bunny-icon">
     </div>
-    <div id="chat-box"></div>
-    <input type="text" id="user-input" placeholder="Escribe tu mensaje aquí..." />
-    <button id="send-button">Enviar</button>
-</div>
+    
+    <!-- Contenedor del chat -->
+    <div id="chat-container" class="hidden">
+        <div id="chat-header">
+            <span>Chat con Vainilla</span>
+            <button id="close-chat">✖</button>
+        </div>
+        <div id="chat-box"></div>
+        <div id="chat-input">
+            <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
+            <button id="send-button">Enviar</button>
+        </div>
+    </div>
 
 
     <!-- WhatsApp Button Floating -->
