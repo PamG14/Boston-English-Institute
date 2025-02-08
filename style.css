@@ -452,23 +452,28 @@ footer a:hover {
 
 .message.user {
     justify-content: flex-end;
-    background-color: #d1e7ff;
+}
+
+.message .bubble {
     padding: 8px;
     border-radius: 10px;
     max-width: 70%;
 }
 
+.message.assistant .bubble {
+    background-color: #f3f3f3;
+}
+
+.message.user .bubble {
+    background-color: #d1e7ff;
+}
+
+/* Icono del conejo */
 .bunny-icon {
     width: 40px;
     height: 40px;
     margin-right: 10px;
-}
-
-.bubble {
-    background-color: #f3f3f3;
-    padding: 10px;
-    border-radius: 10px;
-    max-width: 70%;
+    animation: bounce 0.6s ease-in-out;
 }
 
 @keyframes bounce {
@@ -480,12 +485,8 @@ footer a:hover {
     }
 }
 
-.bunny-icon {
-    animation: bounce 0.6s ease-in-out;
-}
-
 /* Botón flotante con Vainilla */
-#chat-toggle {
+#chat-button {
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -517,6 +518,7 @@ footer a:hover {
     padding: 10px;
     flex-direction: column;
     z-index: 1001; /* Asegura que esté encima del botón */
+    display: none; /* Oculto por defecto */
 }
 
 /* Header del chat */
@@ -538,11 +540,6 @@ footer a:hover {
     cursor: pointer;
 }
 
-/* Ocultar el chat por defecto */
-.hidden {
-    display: none;
-}
-
 /* Caja de mensajes */
 #chat-box {
     height: 250px;
@@ -557,6 +554,8 @@ footer a:hover {
 #user-input {
     width: 80%;
     padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 #send-button {
@@ -567,4 +566,9 @@ footer a:hover {
     color: white;
     border: none;
     border-radius: 5px;
+}
+
+/* Para ocultar elementos cuando sea necesario */
+.hidden {
+    display: none;
 }
