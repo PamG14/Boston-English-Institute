@@ -35,13 +35,23 @@ document.addEventListener("DOMContentLoaded", function () {
         userInput.value = "";
     }
     
-    function appendMessage(sender, text) {
-        const messageDiv = document.createElement("div");
-        messageDiv.classList.add("message");
-        messageDiv.innerHTML = `<strong>${sender}:</strong> ${text}`;
-        chatBox.appendChild(messageDiv);
-        chatBox.scrollTop = chatBox.scrollHeight;
+function appendMessage(sender, text) {
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("message");
+
+    if (sender === "Vainilla") {
+        messageDiv.innerHTML = `<div class="message assistant">
+            <img src="conejo.png" alt="Conejito" class="bunny-icon">
+            <div class="bubble"><strong>${sender}:</strong> ${text}</div>
+        </div>`;
+    } else {
+        messageDiv.innerHTML = `<div class="message user"><strong>${sender}:</strong> ${text}</div>`;
     }
+
+    chatBox.appendChild(messageDiv);
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
     
     sendButton.addEventListener("click", sendMessage);
     userInput.addEventListener("keypress", function (e) {
