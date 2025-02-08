@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const chatContainer = document.getElementById("chat-container");
-    const chatButton = document.getElementById("chat-button");
+   const chatToggle = document.getElementById("chat-toggle");
     const closeChat = document.getElementById("close-chat");
     const chatBox = document.getElementById("chat-box");
     const userInput = document.getElementById("user-input");
