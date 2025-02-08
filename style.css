@@ -429,7 +429,7 @@ footer a:hover {
 }
 
 /* Animación para que ".resources" entre desde la derecha */
-.resources {
+.course {
     animation: slideInRight 1s ease-out forwards;
 }
 .message {
