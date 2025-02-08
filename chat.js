@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Funcionalidad para abrir y cerrar el chat
+    const chatToggle = document.getElementById("chat-toggle");
     chatButton.addEventListener("click", function () {
         chatContainer.classList.toggle("hidden");
     });
