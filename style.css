@@ -511,3 +511,59 @@ footer a:hover {
     border: none;
     border-radius: 5px;
 }
+/* Botón flotante con Vainilla */
+#chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.chat-bubble {
+    background-color: #f3f3f3;
+    padding: 8px 12px;
+    border-radius: 20px;
+    margin-right: 10px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Ocultar el chat por defecto */
+.hidden {
+    display: none;
+}
+
+/* Contenedor del chat */
+#chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    flex-direction: column;
+}
+
+/* Header del chat */
+#chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px 5px 0 0;
+}
+
+#close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
