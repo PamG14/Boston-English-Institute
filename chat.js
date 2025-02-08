@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (sender === "Vainilla") {
             messageDiv.classList.add("assistant");
             messageDiv.innerHTML = `
-                <img src="bunny-icon.png" alt="Bunny" class="bunny-icon">
+                <img src="conejo.png" alt="Bunny" class="bunny-icon">
                 <div class="bubble"><strong>${sender}:</strong> ${text}</div>
             `;
         } else {
