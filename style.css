@@ -422,4 +422,12 @@ footer a:hover {
 .about, .resources {
     opacity: 0; /* Oculto hasta la animación */
 }
+/* Animación para que ".about" entre desde la izquierda */
+.about {
+    animation: slideInLeft 1s ease-out forwards;
+}
 
+/* Animación para que ".resources" entre desde la derecha */
+.resources {
+    animation: slideInRight 1s ease-out forwards;
+}
