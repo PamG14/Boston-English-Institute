@@ -432,3 +432,46 @@ footer a:hover {
 .resources {
     animation: slideInRight 1s ease-out forwards;
 }
+.message {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+    font-family: Arial, sans-serif;
+}
+
+.message.assistant {
+    justify-content: flex-start;
+}
+
+.message.user {
+    justify-content: flex-end;
+    background-color: #d1e7ff;
+    padding: 8px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+
+.bunny-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.bubble {
+    background-color: #f3f3f3;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 70%;
+}
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+.bunny-icon {
+    animation: bounce 0.6s ease-in-out;
+}
