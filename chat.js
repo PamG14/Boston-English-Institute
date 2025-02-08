@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const sendButton = document.getElementById("send-button");
 
     const faqResponses = {
-        "días y horarios": "Nuestros cursos se dictan de lunes a viernes en distintos horarios. Contáctanos para más detalles.",
+        "hola": "¡Hola!",
+        "días y horarios": "Nuestros cursos se dictan de lunes a jueves por la tarde. Contáctanos para más detalles.",
         "clases los fines de semana": "Actualmente, no ofrecemos clases los fines de semana.",
         "cambiar el horario": "Los cambios de horario están sujetos a disponibilidad. Por favor, consulta con administración.",
         "precio": "Los precios varían según el curso. Contáctanos para obtener más información.",
