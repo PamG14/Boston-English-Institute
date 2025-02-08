@@ -396,5 +396,30 @@ footer a:hover {
 
 }
 
+/* Animación para que vengan desde la izquierda */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 
+/* Animación para que vengan desde la derecha */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+.about, .resources {
+    opacity: 0; /* Oculto hasta la animación */
+}
 
