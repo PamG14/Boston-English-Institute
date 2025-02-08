@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
+    const chatContainer = document.getElementById("chat-container");
+    const chatButton = document.getElementById("chat-button");
+    const closeChat = document.getElementById("close-chat");
     const chatBox = document.getElementById("chat-box");
     const userInput = document.getElementById("user-input");
     const sendButton = document.getElementById("send-button");
-    
+
     const faqResponses = {
         "días y horarios": "Nuestros cursos se dictan de lunes a viernes en distintos horarios. Contáctanos para más detalles.",
         "clases los fines de semana": "Actualmente, no ofrecemos clases los fines de semana.",
@@ -16,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "clases online": "Sí, ofrecemos clases tanto presenciales como online.",
         "certificaciones": "Al completar un curso, recibirás un certificado. También preparamos para exámenes internacionales."
     };
-    
+
     function sendMessage() {
         const userText = userInput.value.trim().toLowerCase();
         if (!userText) return;
@@ -30,31 +33,42 @@ document.addEventListener("DOMContentLoaded", function () {
                 break;
             }
         }
-        
+
         setTimeout(() => appendMessage("Vainilla", response), 500);
         userInput.value = "";
     }
-    
-function appendMessage(sender, text) {
-    const messageDiv = document.createElement("div");
-    messageDiv.classList.add("message");
 
-    if (sender === "Vainilla") {
-        messageDiv.innerHTML = `<div class="message assistant">
-            <img src="conejo.png" alt="Conejito" class="bunny-icon">
-            <div class="bubble"><strong>${sender}:</strong> ${text}</div>
-        </div>`;
-    } else {
-        messageDiv.innerHTML = `<div class="message user"><strong>${sender}:</strong> ${text}</div>`;
+    function appendMessage(sender, text) {
+        const messageDiv = document.createElement("div");
+        messageDiv.classList.add("message");
+
+        if (sender === "Vainilla") {
+            messageDiv.classList.add("assistant");
+            messageDiv.innerHTML = `
+                <img src="bunny-icon.png" alt="Bunny" class="bunny-icon">
+                <div class="bubble"><strong>${sender}:</strong> ${text}</div>
+            `;
+        } else {
+            messageDiv.classList.add("user");
+            messageDiv.innerHTML = `<div class="bubble"><strong>${sender}:</strong> ${text}</div>`;
+        }
+
+        chatBox.appendChild(messageDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
-
-    
     sendButton.addEventListener("click", sendMessage);
     userInput.addEventListener("keypress", function (e) {
         if (e.key === "Enter") sendMessage();
     });
+
+    // Funcionalidad para abrir y cerrar el chat
+    chatButton.addEventListener("click", function () {
+        chatContainer.classList.toggle("hidden");
+    });
+
+    closeChat.addEventListener("click", function () {
+        chatContainer.classList.add("hidden");
+    });
 });
+
