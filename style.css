@@ -178,6 +178,14 @@ main {
     color: #333;
    
 }
+.resource-item h1 {
+    font-size: 2.5em;
+    color: #d4af37;
+    margin-bottom: 20px;
+    
+   
+}
+
 
 /* Responsive Resources Section */
 @media screen and (max-width: 768px) {
