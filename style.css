@@ -18,6 +18,7 @@ body {
     padding: 0 10px; /* Márgenes laterales para evitar contenido pegado al borde */
     border-radius: 10px; /* Bordes redondeados */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    flex-grow: 1;
 }
 header h1 {
     font-size: 2.5em;
@@ -419,7 +420,7 @@ footer a:hover {
         opacity: 1;
     }
 }
-.about, .resources {
+.about, .course {
     opacity: 0; /* Oculto hasta la animación */
 }
 /* Animación para que ".about" entre desde la izquierda */
