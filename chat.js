@@ -57,9 +57,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 💡 Función para alternar el chat (abrir/cerrar)
+
     chatButton.addEventListener("click", function () {
-        chatContainer.classList.toggle("hidden");
-    });
+    if (chatContainer.classList.contains("hidden")) {
+        chatContainer.classList.remove("hidden"); // Mostrar el chat
+    } else {
+        chatContainer.classList.add("hidden"); // Ocultar el chat
+    }
+});
+
+    
 
     // 💡 Función para cerrar el chat con el botón "X"
     closeChat.addEventListener("click", function () {
