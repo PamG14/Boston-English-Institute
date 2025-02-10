@@ -90,3 +90,18 @@ document.addEventListener("DOMContentLoaded", function () {
         if (e.key === "Enter") sendMessage();
     });
 });
+    // 💡 Función para alternar el chat (abrir/cerrar)
+    chatButton.addEventListener("click", function () {
+    if (chatContainer.classList.contains("hidden")) {
+        chatContainer.classList.remove("hidden"); // Mostrar el chat
+    } else {
+        chatContainer.classList.add("hidden"); // Ocultar el chat
+    }
+});
+
+    // 💡 Función para cerrar el chat con el botón "X"
+    closeChat.addEventListener("click", function () {
+    chatContainer.classList.add("hidden");
+    });
+
+});
