@@ -518,8 +518,10 @@ footer a:hover {
     padding: 10px;
     flex-direction: column;
     z-index: 1001; /* Asegura que esté encima del botón */
-    display: none; /* Oculto por defecto */
+   
 }
+
+ //display: none; /* Oculto por defecto */
 
 /* Header del chat */
 .chat-header {
