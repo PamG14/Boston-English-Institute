@@ -468,14 +468,13 @@ footer a:hover {
     padding: 10px;
 }
 
-/* Imagen del conejo en los mensajes del bot */
-.message.assistant::before {
-    content: "";
-    background: url('conejo.png') no-repeat center center/cover;
-    width: 30px; 
-    height: 30px; 
-    margin-right: 8px; /* Espacio entre el conejo y el mensaje */
+/* Imagen del conejo en las respuestas del bot dentro del chat */
+.message.assistant .bot-avatar {
+    width: 30px;
+    height: 30px;
+    margin-right: 8px;
     border-radius: 50%;
+    background: url('conejo.png') no-repeat center center/cover;
 }
 
 /* Estilo de la burbuja del usuario */
@@ -483,7 +482,17 @@ footer a:hover {
     background-color: #d1e7ff;
 }
 
-/* Icono del conejo en el botón flotante */
+/* Icono del conejo en el botón flotante del chat (cuando está cerrado) */
+#chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+}
+
 .bunny-icon {
     width: 40px;
     height: 40px;
@@ -500,36 +509,22 @@ footer a:hover {
     }
 }
 
-/* Botón flotante del chat */
-#chat-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    z-index: 1000;
-}
-
+/* Burbuja de "¿Tienes alguna duda?" con el conejo a la izquierda */
 .chat-bubble {
     background-color: #f3f3f3;
     padding: 8px 12px;
     border-radius: 20px;
-    margin-right: 10px;
     font-size: 14px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     display: flex;
     align-items: center;
 }
 
-/* Imagen del conejo en la burbuja de "¿Tienes alguna duda?" */
-.chat-bubble::before {
-    content: "";
-    background: url('conejo.png') no-repeat center center/cover;
-    width: 25px;
-    height: 25px;
+/* Imagen del conejo a la izquierda de la burbuja cuando el chat está cerrado */
+#chat-button .bunny-icon {
+    width: 30px;
+    height: 30px;
     margin-right: 8px;
-    border-radius: 50%;
 }
 
 /* Contenedor del chat */
@@ -565,7 +560,7 @@ footer a:hover {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    margin-left: auto; /* Esto lo empuja al extremo derecho */
+    margin-left: auto;
 }
 
 /* Caja de mensajes */
@@ -595,6 +590,12 @@ footer a:hover {
     border: none;
     border-radius: 5px;
 }
+
+/* Para ocultar elementos cuando sea necesario */
+.hidden {
+    display: none;
+}
+
 
 /* Para ocultar elementos cuando sea necesario */
 .hidden {
