@@ -2,13 +2,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const chatButton = document.getElementById("chat-button");
     const chatContainer = document.getElementById("chat-container");
     const closeChat = document.getElementById("close-chat");
-    const sendButton = document.getElementById("send-button");
-    const userInput = document.getElementById("user-input");
     const chatBox = document.getElementById("chat-box");
-
+    const userInput = document.getElementById("user-input");
+    const sendButton = document.getElementById("send-button");
+    
     const faqResponses = {
-        "hola": "¡Hola!",
-        "días y horarios": "Nuestros cursos se dictan de lunes a jueves por la tarde. Contáctanos para más detalles.",
+        "días y horarios": "Nuestros cursos se dictan de lunes a viernes en distintos horarios. Contáctanos para más detalles.",
         "clases los fines de semana": "Actualmente, no ofrecemos clases los fines de semana.",
         "cambiar el horario": "Los cambios de horario están sujetos a disponibilidad. Por favor, consulta con administración.",
         "precio": "Los precios varían según el curso. Contáctanos para obtener más información.",
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         "clases online": "Sí, ofrecemos clases tanto presenciales como online.",
         "certificaciones": "Al completar un curso, recibirás un certificado. También preparamos para exámenes internacionales."
     };
-
+    
     function findBestMatch(userText) {
         let bestMatch = "";
         let highestScore = 0;
@@ -89,19 +88,13 @@ document.addEventListener("DOMContentLoaded", function () {
     userInput.addEventListener("keypress", function (e) {
         if (e.key === "Enter") sendMessage();
     });
-});
-    // 💡 Función para alternar el chat (abrir/cerrar)
+    
     chatButton.addEventListener("click", function () {
-    if (chatContainer.classList.contains("hidden")) {
-        chatContainer.classList.remove("hidden"); // Mostrar el chat
-    } else {
-        chatContainer.classList.add("hidden"); // Ocultar el chat
-    }
-});
-
-    // 💡 Función para cerrar el chat con el botón "X"
-    closeChat.addEventListener("click", function () {
-    chatContainer.classList.add("hidden");
+        chatContainer.style.display = "block";
     });
-
+    
+    closeChat.addEventListener("click", function () {
+        chatContainer.style.display = "none";
+    });
 });
+
