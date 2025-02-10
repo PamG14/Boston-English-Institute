@@ -21,59 +21,70 @@ document.addEventListener("DOMContentLoaded", function () {
         "certificaciones": "Al completar un curso, recibirás un certificado. También preparamos para exámenes internacionales."
     };
 
+    function findBestMatch(userText) {
+        let bestMatch = "";
+        let highestScore = 0;
+        
+        for (let key in faqResponses) {
+            let score = similarity(userText, key);
+            if (score > highestScore) {
+                highestScore = score;
+                bestMatch = key;
+            }
+        }
+        
+        return highestScore > 0.5 ? faqResponses[bestMatch] : "No tengo esa información en este momento. Por favor, consulta con administración.";
+    }
+    
+    function similarity(s1, s2) {
+        let longer = s1.length > s2.length ? s1 : s2;
+        let shorter = s1.length > s2.length ? s2 : s1;
+        let longerLength = longer.length;
+        if (longerLength === 0) return 1.0;
+        return (longerLength - editDistance(longer, shorter)) / parseFloat(longerLength);
+    }
+    
+    function editDistance(s1, s2) {
+        let costs = new Array();
+        for (let i = 0; i <= s1.length; i++) {
+            let lastValue = i;
+            for (let j = 0; j <= s2.length; j++) {
+                if (i === 0)
+                    costs[j] = j;
+                else {
+                    if (j > 0) {
+                        let newValue = costs[j - 1];
+                        if (s1.charAt(i - 1) !== s2.charAt(j - 1))
+                            newValue = Math.min(Math.min(newValue, lastValue), costs[j]) + 1;
+                        costs[j - 1] = lastValue;
+                        lastValue = newValue;
+                    }
+                }
+            }
+            if (i > 0) costs[s2.length] = lastValue;
+        }
+        return costs[s2.length];
+    }
+    
     function sendMessage() {
         const userText = userInput.value.trim().toLowerCase();
         if (!userText) return;
-        
-        appendMessage("Tú", userText);
-        let response = "No tengo esa información en este momento. Por favor, consulta con administración.";
 
-        for (let key in faqResponses) {
-            if (userText.includes(key)) {
-                response = faqResponses[key];
-                break;
-            }
-        }
+        appendMessage("Tú", userText);
+        let response = findBestMatch(userText);
         
         setTimeout(() => appendMessage("Vainilla", response), 500);
         userInput.value = "";
     }
-
+    
     function appendMessage(sender, text) {
         const messageDiv = document.createElement("div");
         messageDiv.classList.add("message");
-        if (sender === "Vainilla") {
-            messageDiv.classList.add("assistant");
-            messageDiv.innerHTML = `
-                <img src="conejo.png" alt="Bunny" class="bunny-icon">
-                <div class="bubble"><strong>${sender}:</strong> ${text}</div>
-            `;
-        } else {
-            messageDiv.classList.add("user");
-            messageDiv.innerHTML = `<div class="bubble"><strong>${sender}:</strong> ${text}</div>`;
-        }
+        messageDiv.innerHTML = `<strong>${sender}:</strong> ${text}`;
         chatBox.appendChild(messageDiv);
         chatBox.scrollTop = chatBox.scrollHeight;
     }
-
-    // 💡 Función para alternar el chat (abrir/cerrar)
-
-    chatButton.addEventListener("click", function () {
-    if (chatContainer.classList.contains("hidden")) {
-        chatContainer.classList.remove("hidden"); // Mostrar el chat
-    } else {
-        chatContainer.classList.add("hidden"); // Ocultar el chat
-    }
-});
-
     
-
-    // 💡 Función para cerrar el chat con el botón "X"
-    closeChat.addEventListener("click", function () {
-    chatContainer.classList.add("hidden");
-    });
-
-    // 💡 Enviar mensaje con botón o tecla Enter
     sendButton.addEventListener("click", sendMessage);
     userInput.addEventListener("keypress", function (e) {
         if (e.key === "Enter") sendMessage();
