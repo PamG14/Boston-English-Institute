@@ -69,9 +69,9 @@ document.addEventListener("DOMContentLoaded", function () {
     
 
     // 💡 Función para cerrar el chat con el botón "X"
-   // closeChat.addEventListener("click", function () {
-   //     chatContainer.classList.add("hidden");
-    //});
+    closeChat.addEventListener("click", function () {
+    chatContainer.classList.add("hidden");
+    });
 
     // 💡 Enviar mensaje con botón o tecla Enter
     sendButton.addEventListener("click", sendMessage);
